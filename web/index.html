@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LLM-ID Security Analyst</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">LOCAL SECURITY OPERATIONS</p>
+        <h1>LLM-ID Analyst</h1>
+      </div>
+      <div class="status-card">
+        <span id="statusDot" class="status-dot"></span>
+        <div><strong id="statusText">Checking services…</strong><small id="modelText">Local engine</small></div>
+      </div>
+    </header>
+
+    <section class="summary-grid" aria-label="System information">
+      <article><span>Analysis</span><strong>Rules + Qwen</strong></article>
+      <article><span>Telemetry</span><strong>Sysmon Event ID 1</strong></article>
+      <article><span>Operations</span><strong>Read-only tools</strong></article>
+    </section>
+
+    <section class="workspace">
+      <aside class="sidebar">
+        <h2>Quick investigations</h2>
+        <button class="prompt" data-prompt="Check this computer for suspicious activity and give me a concise result.">Quick security scan</button>
+        <button class="prompt" data-prompt="Perform a broader investigation using recent Sysmon events, running processes, network connections, and stored alert history. Separate observations, interpretation, and limitations.">Broader investigation</button>
+        <button class="prompt" data-prompt="Show recent stored IDS alerts and explain the highest-risk evidence.">Recent alerts</button>
+        <button class="prompt" data-prompt="Inspect active network connections and report only evidence that deserves investigation.">Network inspection</button>
+        <div class="notice"><strong>Evidence boundary</strong><p>The agent can only assess telemetry returned by its connected engines.</p></div>
+      </aside>
+
+      <section class="chat-panel">
+        <div id="messages" class="messages" aria-live="polite">
+          <div class="message assistant">
+            <div class="avatar">ID</div>
+            <div class="bubble"><strong>LLM-ID is ready.</strong><p>Ask naturally. I will call the relevant local security engines before making claims about this computer.</p></div>
+          </div>
+        </div>
+        <form id="chatForm" class="composer">
+          <textarea id="messageInput" rows="2" placeholder="Ask about suspicious activity, processes, connections, or alerts…" required></textarea>
+          <div class="composer-actions">
+            <button id="resetButton" type="button" class="secondary">New session</button>
+            <button id="sendButton" type="submit" class="primary">Investigate</button>
+          </div>
+        </form>
+      </section>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
